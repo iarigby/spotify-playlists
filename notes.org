@@ -1,0 +1,6 @@
+#+TITLE: notes
+
+* documentation
+https://developer.spotify.com/documentation/web-api/reference/object-model/#track-object-full
+https://developer.spotify.com/documentation/web-api/reference/object-model/#playlist-object-full
+*

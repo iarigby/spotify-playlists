@@ -10,5 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "spotify-web-api-node": "^4.0.0"
   }
 }

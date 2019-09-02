@@ -1,5 +1,4 @@
-require('dotenv').config()
-
+const spotify_api = require('./set-up-api')
 function get_playlist_id(song_name) {
     return new Promise()
 }
@@ -14,16 +13,9 @@ function get_playlist_contents(playlist_id) {
     })
 }
 
-const SpotifyWebApi = require('spotify-web-api-node')
-const spotify_api = new SpotifyWebApi({
-    clientid: '4561e903b7db4f5ea09b30842bfa3f67',
-    clientSecret: process.env.api_secret,
-    redirectUri: 'http://localhost'
-})
-spotify_api.setAccessToken(process.env.access_token)
 // mine is
 // 21aamjqllbwgchskywbugsopa
-// liked songs playlist
+// liked from radio playlist
 // 7kGIhqEo5HGYTlFFeIi1j7
 function get_playlists(user_id) {
     spotify_api.getUserPlaylists(user_id).then(
@@ -36,8 +28,14 @@ function get_playlists(user_id) {
     )
 }
 
+function get_last_tracks(playlist_id, limit=100) {
+    return spotify_api.getPlaylistTracks(playlist_id, {
+        limit: limit
+    })
+}
 module.exports = {
     get_playlist_contents: get_playlist_contents,
     get_playlist_id: get_playlist_id,
-    get_playlists: get_playlists
+    get_playlists: get_playlists,
+    get_last_tracks: get_last_tracks
 }

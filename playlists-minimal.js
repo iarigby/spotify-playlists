@@ -8,31 +8,24 @@ function update_playlist() {
         api.get_last_tracks(source_playlist, 5),
         api.get_last_tracks(destination_playlist)
     ]).then(values => {
-        return values.map(get_songs)
-    }).then(values => {
-        return values.map(get_ids)
-    }).then(
-        source_tracks = values[0]
-        destination_tracks = values[1]
-        return new Setdestination_tracks.concat(source_tracks).filter()
-    }, default_callback)
-
+        api.remove_songs(destination_playlist, old_tracks(values))
+            .then(default_callback, default_callback)
+        api.add_songs(destination_playlist, new_tracks(values))
+            .then(default_callback, default_callback)
+    }).catch(default_callback)
 }
 
-function get_songs(result) {
-    return result.body.items
+function difference(arr1, arr2) {
+    return arr1.filter(elem => !arr2.includes(elem))
 }
 
-function get_ids(songs) {
-    return songs.map(song => {return song.id})
+function old_tracks(arr) {
+    return difference(arr[0], arr[1])
 }
 
-/**
- * add new songs
- * remove ones not needed
- * */
-function merge_playlists(source, destination) {
-    return Array.from(
-        new Set(source.concat(destination))
-            .filter(song => source.includes(song)))
+function new_tracks(arr) {
+    return difference(arr[1], arr[0])
 }
+
+// update_playlist()
+// api.add_songs(destination_playlist)

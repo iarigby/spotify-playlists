@@ -1,5 +1,6 @@
 const api = require('./spotify-api')
-const spotify_api = require('./set-up-api')
+
+function default_callback(err) {console.log(err)}
 it('learn to use promises', () => {
     expect.assertions(1)
     return expect(api.get_playlist_contents(true)).resolves.toEqual(["song1", "song2"])
@@ -35,8 +36,12 @@ it('correctly use api', () => {
     expect.assertions(1)
     return api.get_last_tracks('7kGIhqEo5HGYTlFFeIi1j7', 5).then(
         function(data) {
-            expect(data.body.items.length).toBe(5)
+            expect(data.length).toBe(5)
+        }, function (err) {
+            console.log(err)
         })
 })
+
+// 5wQ4WwvlMMk0B7EKL5RBOM
 // http://localhost/?code=AQAuqiA-6seNum3lype4dYLlHSJ0TKXATBXsQuGH4W87i2fQuQ-IQCN587YaVZRmvzUWvk5W5nWlfAeDT2CmIBB50UI5RPmYefruZpbLSt0COPQWMe5tDk_NqpECtD1sP0AY-qdR2VgxCGfl81pYidN8Drc959PteSMzAXtJIZ6LhVSTp1s4ig
 // AQAuqiA-6seNum3lype4dYLlHSJ0TKXATBXsQuGH4W87i2fQuQ-IQCN587YaVZRmvzUWvk5W5nWlfAeDT2CmIBB50UI5RPmYefruZpbLSt0COPQWMe5tDk_NqpECtD1sP0AY-qdR2VgxCGfl81pYidN8Drc959PteSMzAXtJIZ6LhVSTp1s4i

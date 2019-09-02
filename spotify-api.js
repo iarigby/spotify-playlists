@@ -31,11 +31,30 @@ function get_playlists(user_id) {
 function get_last_tracks(playlist_id, limit=100) {
     return spotify_api.getPlaylistTracks(playlist_id, {
         limit: limit
-    })
+    }).then(result => get_ids(result.body.items))
+}
+
+// TODO test these
+function add_songs(playlist_id, song_ids) {
+    return spotify_api.addTracksToPlaylist(playlist_id, song_ids.map(transform_id))
+}
+
+function remove_songs(playlist_id, song_ids) {
+    return spotify_api.removeTracksFromPlaylist(playlist_id, song_ids.map(transform_id))
+}
+
+function transform_id(id) {
+    return `spotify:track:${id}`
+}
+
+function get_ids(songs) {
+    return songs.map(song => {return song.track.id})
 }
 module.exports = {
     get_playlist_contents: get_playlist_contents,
     get_playlist_id: get_playlist_id,
     get_playlists: get_playlists,
-    get_last_tracks: get_last_tracks
+    get_last_tracks: get_last_tracks,
+    add_songs: add_songs,
+    remove_songs: remove_songs
 }

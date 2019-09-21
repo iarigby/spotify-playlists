@@ -40,6 +40,7 @@ function add_songs(playlist_id, song_ids) {
 }
 
 function remove_songs(playlist_id, song_ids) {
+    // this might need changing (without transform)
     return spotify_api.removeTracksFromPlaylist(playlist_id, song_ids.map(transform_id))
 }
 

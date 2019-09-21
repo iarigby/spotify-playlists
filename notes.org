@@ -3,4 +3,7 @@
 * documentation
 https://developer.spotify.com/documentation/web-api/reference/object-model/#track-object-full
 https://developer.spotify.com/documentation/web-api/reference/object-model/#playlist-object-full
-*
+
+https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes
+* sdk
+https://github.com/thelinmichael/spotify-web-api-node

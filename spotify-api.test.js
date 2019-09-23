@@ -1,6 +1,6 @@
 const api = require('./spotify-api')
 
-function default_callback(err) {console.log(err)}
+function default_callback(err) { console.log(err) }
 it('learn to use promises', () => {
     expect.assertions(1)
     return expect(api.get_playlist_contents(true)).resolves.toEqual(["song1", "song2"])
@@ -42,24 +42,25 @@ it('get user playlists', () => {
 //         })
 // })
 
-/*
-it('abc', () => {
-    expect.assertions(1)
-    return api.add_songs('3jqWiGdctbwwRDAxRI9cCR', [
-        '4pR0M3MWNjotbg7YOq9yn5'
-    ]).then(function(data) {
-        expect(true)
-    }, function (err) {
-        console.log(err)
-    })
-})
-*/
+
+// it('abc', () => {
+//     expect.assertions(1)
+//     return api.add_songs('3jqWiGdctbwwRDAxRI9cCR', [
+//         '4pR0M3MWNjotbg7YOq9yn5'
+//     ]).then(function(data) {
+//         expect(true)
+//     }, function (err) {
+//         console.log(err)
+//     })
+// })
+
 const min = require('./playlists-minimal')
 it('general test', () => {
     expect.assertions(1)
-    return min.update_playlist().then(
-    data => expect(true),
-    err => console.log(err)
+    return min.update_playlist()
+        .then(
+            data => expect(true),
+            err => console.log(err)
         )
 })
 

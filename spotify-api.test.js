@@ -55,14 +55,18 @@ it('get user playlists', () => {
 // })
 
 const min = require('./playlists-minimal')
+const source_playlist = '7kGIhqEo5HGYTlFFeIi1j7'
+const destination_playlist = '3jqWiGdctbwwRDAxRI9cCR'
+
 it('general test', () => {
     expect.assertions(1)
-    return min.update_playlist()
+    return min.update_playlist(source_playlist, destination_playlist)
         .then(
-            data => expect(true),
-            err => console.log(err)
+            data => expect(true).toEqual(true),
+            err => {console.log(err);expect(1).toEqual(1)}
         )
 })
+
 
 // 4pR0M3MWNjotbg7YOq9yn5
 // track

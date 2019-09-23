@@ -1,16 +1,16 @@
 const api = require('./spotify-api')
 
 function default_callback(err) { console.log(err) }
-const source_playlist = '7kGIhqEo5HGYTlFFeIi1j7'
-const destination_playlist = '3jqWiGdctbwwRDAxRI9cCR'
+// const source_playlist = '7kGIhqEo5HGYTlFFeIi1j7'
+// const destination_playlist = '3jqWiGdctbwwRDAxRI9cCR'
 
-exports.update_playlist = function() {
+exports.update_playlist = function (source_playlist, destination_playlist, amount) {
     return Promise.all([
-        api.get_last_tracks(source_playlist, 5),
+        api.get_last_tracks(source_playlist, amount),
         api.get_last_tracks(destination_playlist)
     ]).then(values => {
-       api.remove_songs(destination_playlist, old_tracks(values))
-           .then(default_callback, default_callback)
+        api.remove_songs(destination_playlist, old_tracks(values))
+            .then(default_callback, default_callback)
         api.add_songs(destination_playlist, new_tracks(values))
             .then(default_callback, default_callback)
     }).catch(default_callback)

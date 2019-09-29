@@ -28,7 +28,7 @@
 // offline_contents.map(list => list -> "offline")
 // have database of name -> spotify_id
 // if not present, search on spotify or create new playlist and save id
-const api = require('./spotify-api')
+const api = require('../spotify-api')
 // get from database
 const old_songs = []
 

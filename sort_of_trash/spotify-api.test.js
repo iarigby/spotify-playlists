@@ -1,4 +1,4 @@
-const api = require('./spotify-api')
+const api = require('../spotify-api')
 
 function default_callback(err) { console.log(err) }
 it('learn to use promises', () => {
@@ -54,7 +54,7 @@ it('get user playlists', () => {
 //     })
 // })
 
-const min = require('./playlists-minimal')
+const min = require('../playlists-minimal')
 const source_playlist = '7kGIhqEo5HGYTlFFeIi1j7'
 const destination_playlist = '3jqWiGdctbwwRDAxRI9cCR'
 

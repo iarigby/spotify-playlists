@@ -8,16 +8,16 @@ exports.update_playlist = function (source_playlist, destination_playlist, amoun
         api.get_last_tracks(destination_playlist, amount)
     ]).then(values => {
         const delete_tracks = old_tracks(values)
-        if (delete_tracks.length > 0)
+        if (delete_tracks.length > 0) 
             api.remove_songs(destination_playlist, delete_tracks)
-                .then(default_callback, default_callback)
+                .then(() => console.log("deleted tracks from " + destination_playlist), default_callback)
         else
             console.log('nothing to delete')
 
         const add_tracks = new_tracks(values)
-        if (add_tracks.length > 0)
+        if (add_tracks.length > 0) 
             api.add_songs(destination_playlist, add_tracks)
-                .then(default_callback, default_callback)
+                .then(() => console.log('added tracks from ' + source_playlist), default_callback)
         else
             console.log('nothing to add')
     }).catch(default_callback)

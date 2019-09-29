@@ -3,7 +3,13 @@ const auth = require('spotify-auth-node')
 
 function authorize() {
     return auth.getAccessToken()
-        .then(token => spotify_api.setAccessToken(token))
+        .then(token => {
+            spotify_api.setAccessToken(token)
+        })
+        .then(() => {
+            if (!spotify_api.getAccessToken())
+            throw "token not set"
+        })
 }
 
 function get_last_tracks(playlist_id, limit = 100, saved_tracks) {

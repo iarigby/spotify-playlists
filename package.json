@@ -1,7 +1,7 @@
 {
   "name": "spotify-playlists",
   "version": "1.0.0",
-  "description": "",
+  "description": "utils for managing playlists",
   "main": "index.js",
   "scripts": {
     "test": "jest"

@@ -5,7 +5,8 @@ function default_callback(err) { console.log(err) }
 exports.update_playlist = function (source_playlist, destination_playlist, amount, saved_tracks) {
     return Promise.all([
         api.get_last_tracks(source_playlist, amount, saved_tracks),
-        api.get_last_tracks(destination_playlist, amount)
+        api.get_last_tracks(destination_playlist, amount*2) 
+        // *2 because right now delete is not working
     ]).then(values => {
         const delete_tracks = old_tracks(values)
         if (delete_tracks.length > 0) 

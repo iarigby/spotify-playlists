@@ -10,8 +10,9 @@ exports.update_playlist = function (source_playlist, destination_playlist, amoun
     ]).then(values => {
         const delete_tracks = old_tracks(values)
         if (delete_tracks.length > 0) 
-            api.remove_songs(destination_playlist, delete_tracks)
-                .then(() => console.log("deleted tracks from " + destination_playlist), default_callback)
+            // api.remove_songs(destination_playlist, delete_tracks)
+                // .then(() => console.log("deleted tracks from " + destination_playlist), default_callback)
+            console.log('skipping delete tracks until issue is fixed')
         else
             console.log('nothing to delete')
 

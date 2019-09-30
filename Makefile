@@ -1,4 +1,7 @@
-name=iarigby/spotify-playlists
-deploy:
-    docker build -t $name .
-    docker push $name:latest
+name := iarigby/spotify-playlists
+
+.PHONY : deploy
+
+deploy :
+	docker build -t $(name) .
+	docker push $(name):latest

@@ -6,9 +6,9 @@ const offline_playlist = '3jqWiGdctbwwRDAxRI9cCR'
 const offline_saved_playlist = '6fsReisctha13w0JfAYXYG'
 
 function refresh() {
-    console.log('interval working')
-    // min.update_playlist(liked_from_radio, offline_playlist, 50)
-    // min.update_playlist('some_bs', offline_saved_playlist, 50, true)
+    console.log(new Date() + ': updating playlist')
+    min.update_playlist(liked_from_radio, offline_playlist, 50)
+    min.update_playlist('some_bs', offline_saved_playlist, 50, true)
 }
 
 setInterval(refresh, 60000)

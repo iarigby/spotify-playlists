@@ -11,4 +11,5 @@ function refresh() {
     min.update_playlist('some_bs', offline_saved_playlist, 50, true)
 }
 
+refresh()
 setInterval(refresh, 60000)

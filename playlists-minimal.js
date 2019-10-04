@@ -17,7 +17,6 @@ exports.update_playlist = function (source_playlist, destination_playlist, amoun
             log('skipping delete tracks until issue is fixed')
         else
             log('nothing to delete')
-        log(`${values[0].length} new, ${} old tracks`)
         const add_tracks = new_tracks(values)
         
         // won't be needed if fixed
